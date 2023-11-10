@@ -1,0 +1,168 @@
+// global variables i.e. also be accessed in other scss files
+$primaryColor: #3590e1;
+$secondaryColor: #31363c;
+$borderColor: #31363c;
+$menuText: #bcbcbe;
+$menuHover: #5b6c7c;
+$headerHeight: 48px;
+$subMenuBackground: #373e44;
+$subMenuHover: #000;
+$pageBackground: #f2f2f2;
+
+// custom fonts
+@font-face {
+  font-family: Lato-Regular;
+  src: url(../assets/fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+  font-family: Lato-Bold;
+  src: url(../assets/fonts/Lato-Bold.ttf);
+}
+
+// sass styling code
+* {
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+  font-family: Lato-Regular, sans-serif;
+}
+
+.header {
+  height: $headerHeight;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: white;
+
+  .brand {
+    grid-column: 1 / 2;
+    width: 195px;
+    min-height: $headerHeight;
+    background-color: $primaryColor;
+
+    div {
+      text-align: left;
+      padding: 10px 15px;
+      color: white;
+      display: flex;
+      align-items: center;
+
+      span {
+        font-family: Lato-Bold, sans-serif;
+        font-size: 18px;
+        margin-left: 7px;
+      }
+    }
+  }
+
+  .account {
+    grid-column: 6 / 7;
+    min-height: $headerHeight;
+
+    .notification {
+      height: $headerHeight;
+      display: flex;
+      align-items: center;
+      padding-right: 20px;
+
+      span {
+        font-size: 18px;
+        font-weight: 600;
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+.content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin-top: $headerHeight;
+  position: relative;
+
+  .side-drawer {
+    height: calc(100vh - $headerHeight);
+    background-color: $secondaryColor;
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 195px;
+
+    .menu-container {
+      border-top: 1px solid $borderColor;
+      color: $menuText;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 28px auto 14px;
+      padding: 12px 10px 12px 20px;
+      width: 100%;
+      text-decoration: none;
+
+      &:hover {
+        background-color: $menuHover;
+        color: white;
+      }
+
+      .menu-icon {
+        font-size: 18px;
+        margin-right: 10px;
+        line-height: 100%;
+      }
+
+      .menu-text {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .drop-down {
+        font-size: 14px;
+        margin-top: 2px;
+      }
+    }
+
+    .sub-menu-container {
+      .sub-menu {
+        background-color: $subMenuBackground;
+        border-left: 2px solid $primaryColor;
+        color: $menuText;
+        display: grid;
+        grid-template-columns: 28px auto;
+        padding: 13px 10px 13px 45px;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $subMenuHover;
+          color: $primaryColor;
+        }
+
+        .sub-menu-icon {
+          font-size: 18px;
+          margin-right: 10px;
+          line-height: 100%;
+        }
+
+        .sub-menu-text {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .page-content {
+    background-color: $pageBackground;
+    grid-column: 2 / 7;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 0;
+    width: 100%;
+    height: calc(100vh - $headerHeight);
+    overflow-y: scroll;
+  }
+}

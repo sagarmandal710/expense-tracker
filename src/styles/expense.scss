@@ -1,0 +1,284 @@
+@import "./index.scss";
+// global variable for this scss file
+$pageHeaderHeight: 8rem;
+$expenseHeading: #3c4043;
+$expenseSubHeading: #5f6368;
+$inputLabel: #333;
+
+// MyExpenses.js
+.loading {
+    height: calc(100vh - $headerHeight - $pageHeaderHeight - (1.5rem + 1.5rem));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// PageHeader.js
+.page-header {
+    border-radius: 0.5rem;
+    height: $pageHeaderHeight;
+    width: 100%;
+    position: relative;
+    background-color: $primaryColor;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 4px rgba(60, 64, 67, .15);
+
+    .header-image {
+        background-size: cover;
+        background-position: 0%;
+        background-repeat: no-repeat;
+        border-radius: inherit;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    .header-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 1rem 1.5rem;
+
+        div {
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+        }
+    }
+}
+
+// ExpenseItem.js
+.expense-container {
+    padding: 0.5rem 0;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.25);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: default;
+    display: flex;
+    align-items: center;
+
+    .expense-icon {
+        border-radius: 100%;
+        background-color: $primaryColor;
+        color: white;
+        width: 2.3rem;
+        height: 2.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        margin: 0 1rem 0 2rem;
+    }
+
+    .expense-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        width: 100%;
+
+        div {
+            .expense-name {
+                font-size: 0.875rem;
+                font-weight: 400;
+                line-height: 1.25rem;
+                color: $expenseHeading;
+            }
+
+            .expense-date {
+                font-size: 0.75rem;
+                font-weight: 400;
+                line-height: 1rem;
+                color: $expenseSubHeading;
+            }
+        }
+
+        .expense-amount,
+        .expense-desc {
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.25rem;
+            color: $expenseHeading;
+        }
+    }
+
+    .expense-edit {
+        border-radius: 100%;
+        margin-right: 2rem;
+        cursor: pointer;
+        color: #5f6368;
+        width: 2.3rem;
+        height: 2.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        padding-left: 2.5px;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .edit-container {
+        background-color: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - $headerHeight);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        form {
+            width: 360px;
+            background-color: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .input-box {
+                margin: 0 auto 1rem;
+                width: 200px;
+                display: flex;
+                align-items: center;
+                height: 30px;
+                border: 1px solid $inputLabel;
+                padding: 0 0 0 8px;
+                font-size: 14px;
+                background-color: $pageBackground;
+
+                input {
+                    height: 100%;
+                    outline: none;
+                    border: none;
+                    margin-right: 1.2rem;
+                    background-color: $pageBackground;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                span {
+                    margin-top: 2px;
+                    font-size: 18px;
+                }
+
+                .drop-down {
+                    height: 100%;
+                    outline: none;
+                    border: none;
+                    background-color: $pageBackground;
+                    width: 100%;
+                }
+
+                input::-webkit-inner-spin-button,
+                input::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    margin: 0;
+                }
+            }
+
+            .edit-button {
+                width: 200px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                button {
+                    width: 95px;
+                    padding: 8px 16px;
+                    border: none;
+                    cursor: pointer;
+                    background-color: white;
+                }
+
+                .save {
+                    background-color: $primaryColor;
+                    color: white;
+                }
+
+                .cancel {
+                    border: 1px solid $primaryColor;
+                    color: $primaryColor;
+                }
+            }
+        }
+    }
+}
+
+// AddExpense.js
+.input-container {
+    margin-bottom: 24px;
+    display: flex;
+
+    label {
+        width: 250px;
+        padding: 5px 50px 5px 0;
+        font-size: 16px;
+        color: $inputLabel;
+        font-weight: 500;
+    }
+
+    .input-box {
+        width: 200px;
+        display: flex;
+        align-items: center;
+        height: 30px;
+        border: 1px solid $inputLabel;
+        padding: 0 0 0 8px;
+        font-size: 14px;
+
+        input {
+            height: 100%;
+            outline: none;
+            border: none;
+            margin-right: 1.2rem;
+            background-color: $pageBackground;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        span {
+            margin-top: 2px;
+            font-size: 18px;
+        }
+
+        .drop-down {
+            height: 100%;
+            outline: none;
+            border: none;
+            background-color: $pageBackground;
+            width: 100%;
+        }
+
+        input::-webkit-inner-spin-button,
+        input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+.submit-button {
+    padding: 15px 250px;
+
+    button {
+        background-color: $primaryColor;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        cursor: pointer;
+    }
+}

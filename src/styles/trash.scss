@@ -1,0 +1,32 @@
+@import "./index.scss";
+
+// Trash.js
+.trash-container {
+    .trash-header {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .trash-image {
+        width: 100%;
+        height: calc(100vh - 3rem - 82px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .image {
+            background-image: url('../assets/images/Throw\ down-bro.svg');
+            background-size: cover;
+            height: 15rem;
+            width: 15rem;
+        }
+
+        .text {
+            font-size: 18px;
+            font-weight: 100;
+            color: #616161;
+        }
+    }
+}
